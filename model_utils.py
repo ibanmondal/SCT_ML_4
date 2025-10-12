@@ -20,7 +20,7 @@ def build_model(input_shape, num_classes):
 def save_model(model, filename='hand_gesture_model.h5'):
     model.save(filename)
 
-# <<< ADD THIS FUNCTION >>>
+
 def load_trained_model(filename='hand_gesture_model.h5'):
     """Load a trained Keras model from file"""
     return load_model(filename)
