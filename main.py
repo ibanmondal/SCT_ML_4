@@ -1,4 +1,3 @@
-# main.py
 import os
 import cv2
 import numpy as np
@@ -45,10 +44,8 @@ def load_data(data_dir, img_size=IMG_SIZE):
 
     return X, y_onehot, le.classes_
 
-# Load training data
 X_train, y_train, gesture_labels = load_data(TRAIN_DIR)
 
-# Data augmentation
 datagen = ImageDataGenerator(
     rotation_range=15,
     width_shift_range=0.1,
@@ -61,16 +58,13 @@ datagen = ImageDataGenerator(
 train_gen = datagen.flow(X_train, y_train, batch_size=64, subset='training')
 val_gen = datagen.flow(X_train, y_train, batch_size=64, subset='validation')
 
-# Build and train model
 model = build_model(input_shape=(64,64,1), num_classes=len(gesture_labels))
 model.fit(train_gen, validation_data=val_gen, epochs=20)
 
-# Save model
 save_model(model)
 np.save('gesture_labels.npy', gesture_labels)
 print("Training done. Model saved as hand_gesture_model.h5")
 
-# Load and test on separate test data
 X_test, y_test, _ = load_data(TEST_DIR)
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print(f"Test Accuracy: {test_acc*100:.2f}%")
