@@ -1,3 +1,4 @@
+[![CodeBeast Score](http://localhost:8000/api/v1/stats/badge?repo=SCT_ML_4)](https://github.com/ibanmondal/CODE-BEAST-AI)
 # Hand Gesture Recognition
 
 A machine learning project that uses a Convolutional Neural Network (CNN) to recognize hand gestures from images. The project includes scripts for training the model on a dataset of hand gesture images and a real-time demo application that uses a webcam to predict gestures.
